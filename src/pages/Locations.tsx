@@ -38,14 +38,15 @@ const markets: MarketLocation[] = [
 
 const Locations = () => {
   return (
-    <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen py-20 bg-grain relative overflow-hidden">
+      <div className="absolute inset-0 bg-mesh-gradient opacity-40" />
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-5xl font-heading font-bold mb-6">
+        <div className="text-center mb-16 max-w-3xl mx-auto animate-blur-in">
+          <h1 className="text-5xl font-heading font-bold mb-6 gradient-text-animated">
             Find Us at Local Markets
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             Visit us at Bay Area farmers markets for the freshest empanadas
           </p>
         </div>
@@ -55,8 +56,8 @@ const Locations = () => {
           {markets.map((market, index) => (
             <div
               key={market.name}
-              className="bg-card rounded-2xl p-8 shadow-lg hover-lift border border-border animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="bg-card rounded-2xl p-8 shadow-lg hover-glow hover-tilt border border-border animate-flip-in card-shine click-bounce"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
               <h3 className="text-2xl font-heading font-bold mb-4">
                 {market.name}
@@ -84,7 +85,7 @@ const Locations = () => {
               <Button
                 variant="outline"
                 size="sm"
-                className="mt-6 w-full"
+                className="mt-6 w-full hover-shine click-ripple"
                 asChild
               >
                 <a
@@ -102,10 +103,10 @@ const Locations = () => {
         </div>
 
         {/* Map Placeholder */}
-        <div className="max-w-5xl mx-auto mb-16">
-          <div className="bg-muted/30 rounded-2xl p-8 text-center border border-border">
-            <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="text-2xl font-heading font-bold mb-2">
+        <div className="max-w-5xl mx-auto mb-16 animate-scale-in">
+          <div className="bg-muted/30 rounded-2xl p-8 text-center border border-border hover-lift float-particles">
+            <MapPin className="w-12 h-12 text-primary mx-auto mb-4 animate-float" />
+            <h3 className="text-2xl font-heading font-bold mb-2 gradient-text">
               Interactive Map
             </h3>
             <p className="text-muted-foreground">
@@ -115,15 +116,15 @@ const Locations = () => {
         </div>
 
         {/* Delivery CTA */}
-        <div className="text-center bg-primary/5 rounded-2xl p-12 max-w-4xl mx-auto border border-primary/20">
-          <h2 className="text-3xl font-heading font-bold mb-4">
+        <div className="text-center bg-gradient-animated rounded-3xl p-12 max-w-4xl mx-auto border border-primary/20 animate-scale-in-center">
+          <h2 className="text-3xl font-heading font-bold mb-4 text-white animate-bounce-in">
             Can't Make It to the Market?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-lg text-white/90 mb-8 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             Order delivery through Uber Eats, DoorDash, or Postmates
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-up" style={{ animationDelay: "0.3s" }}>
+            <Button size="lg" asChild className="hover-shine click-bounce bg-white text-primary hover:bg-white/90">
               <a
                 href="https://www.ubereats.com"
                 target="_blank"
@@ -132,7 +133,7 @@ const Locations = () => {
                 Order Delivery
               </a>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" asChild className="hover-shine click-bounce border-white text-white hover:bg-white hover:text-primary">
               <Link to="/catering">Book Catering</Link>
             </Button>
           </div>

@@ -8,24 +8,25 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-grain">
         <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[20s] hover:scale-110"
+          className="absolute inset-0 bg-cover bg-center animate-kenburns"
           style={{
             backgroundImage: `url(${heroImage})`,
             filter: "brightness(0.7)",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/20" />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-heading font-extrabold text-white mb-6 drop-shadow-lg animate-fade-in-left">
+        <div className="absolute inset-0 bg-mesh-gradient" />
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-blur-in float-particles">
+          <h1 className="text-5xl md:text-7xl font-heading font-extrabold text-white mb-6 drop-shadow-lg animate-bounce-in text-glow">
             Handcrafted Empanadas
           </h1>
-          <p className="text-xl md:text-2xl text-white/95 mb-8 font-medium drop-shadow-md animate-fade-in-right" style={{ animationDelay: "0.2s" }}>
+          <p className="text-xl md:text-2xl text-white/95 mb-8 font-medium drop-shadow-md animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
             Bay Area Pop-Up & Markets
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in" style={{ animationDelay: "0.4s" }}>
-            <Button size="lg" asChild className="hover-lift">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-up" style={{ animationDelay: "0.5s" }}>
+            <Button size="lg" asChild className="hover-lift hover-shine click-bounce">
               <a
                 href="https://www.ubereats.com"
                 target="_blank"
@@ -34,7 +35,7 @@ const Home = () => {
                 Order Now
               </a>
             </Button>
-            <Button size="lg" variant="outline" asChild className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-foreground transition-all duration-300">
+            <Button size="lg" variant="outline" asChild className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-foreground transition-all duration-300 hover-glow click-ripple">
               <Link to="/menu">See Menu</Link>
             </Button>
           </div>
@@ -42,32 +43,33 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-gradient opacity-50" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-            <div className="text-center animate-fade-in hover-lift" style={{ animationDelay: "0.1s" }}>
-              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-float">
+            <div className="text-center animate-scale-in-center hover-lift hover-tilt" style={{ animationDelay: "0.1s" }}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-pulse-scale hover-rotate">
                 <Heart className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-heading font-bold mb-2">Handcrafted Daily</h3>
+              <h3 className="text-xl font-heading font-bold mb-2 gradient-text-animated">Handcrafted Daily</h3>
               <p className="text-muted-foreground">
                 Made fresh with authentic recipes and premium ingredients
               </p>
             </div>
-            <div className="text-center animate-fade-in hover-lift" style={{ animationDelay: "0.2s" }}>
-              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-float" style={{ animationDelay: "0.5s" }}>
+            <div className="text-center animate-scale-in-center hover-lift hover-tilt" style={{ animationDelay: "0.3s" }}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-pulse-scale hover-rotate" style={{ animationDelay: "0.5s" }}>
                 <MapPin className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-heading font-bold mb-2">Local Markets</h3>
+              <h3 className="text-xl font-heading font-bold mb-2 gradient-text-animated">Local Markets</h3>
               <p className="text-muted-foreground">
                 Find us at Bay Area farmers markets every week
               </p>
             </div>
-            <div className="text-center animate-fade-in hover-lift" style={{ animationDelay: "0.3s" }}>
-              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-float" style={{ animationDelay: "1s" }}>
+            <div className="text-center animate-scale-in-center hover-lift hover-tilt" style={{ animationDelay: "0.5s" }}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-pulse-scale hover-rotate" style={{ animationDelay: "1s" }}>
                 <Users className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-heading font-bold mb-2">Catering Available</h3>
+              <h3 className="text-xl font-heading font-bold mb-2 gradient-text-animated">Catering Available</h3>
               <p className="text-muted-foreground">
                 Perfect for events, parties, and corporate gatherings
               </p>

@@ -35,26 +35,27 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen py-20 bg-grain relative overflow-hidden">
+      <div className="absolute inset-0 bg-mesh-gradient opacity-30" />
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-5xl font-heading font-bold mb-6">Get in Touch</h1>
-          <p className="text-xl text-muted-foreground">
+        <div className="text-center mb-16 max-w-3xl mx-auto animate-blur-in">
+          <h1 className="text-5xl font-heading font-bold mb-6 gradient-text-animated">Get in Touch</h1>
+          <p className="text-xl text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             Have a question or want to say hello? We'd love to hear from you
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
-          <div className="animate-fade-in-left">
+          <div className="animate-roll-in float-particles">
             <h2 className="text-3xl font-heading font-bold mb-8">
               Contact Information
             </h2>
 
             <div className="space-y-6 mb-10">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 animate-fade-in-left hover-lift" style={{ animationDelay: "0.1s" }}>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 animate-pulse-scale hover-rotate">
                   <Mail className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -68,8 +69,8 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 animate-fade-in-left hover-lift" style={{ animationDelay: "0.2s" }}>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 animate-pulse-scale hover-rotate">
                   <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -84,8 +85,8 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-muted/30 rounded-2xl p-8 border border-border mb-8">
-              <h3 className="text-xl font-heading font-bold mb-6">
+            <div className="bg-muted/30 rounded-2xl p-8 border border-border mb-8 animate-scale-in hover-lift" style={{ animationDelay: "0.3s" }}>
+              <h3 className="text-xl font-heading font-bold mb-6 gradient-text">
                 Follow Us
               </h3>
               <div className="flex gap-4">
@@ -93,7 +94,7 @@ const Contact = () => {
                   href="https://www.instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover-glow click-bounce animate-float"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-6 h-6" />
@@ -102,7 +103,8 @@ const Contact = () => {
                   href="https://www.facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover-glow click-bounce animate-float"
+                  style={{ animationDelay: "0.5s" }}
                   aria-label="Facebook"
                 >
                   <Facebook className="w-6 h-6" />
@@ -125,7 +127,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card rounded-2xl p-8 shadow-xl border border-border hover-lift animate-fade-in-right">
+          <div className="bg-card rounded-2xl p-8 shadow-xl border border-border hover-glow animate-flip-in card-shine">
             <h2 className="text-2xl font-heading font-bold mb-6">
               Send Us a Message
             </h2>
@@ -180,7 +182,7 @@ const Contact = () => {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full">
+              <Button type="submit" size="lg" className="w-full hover-shine click-bounce hover-glow">
                 Send Message
               </Button>
             </form>

@@ -3,26 +3,27 @@ import { Heart, Award, Leaf } from "lucide-react";
 
 const About = () => {
   return (
-    <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen py-20 bg-grain relative overflow-hidden">
+      <div className="absolute inset-0 bg-mesh-gradient opacity-30" />
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-5xl font-heading font-bold mb-6">Our Story</h1>
-          <p className="text-xl text-muted-foreground">
+        <div className="text-center mb-16 max-w-3xl mx-auto animate-blur-in">
+          <h1 className="text-5xl font-heading font-bold mb-6 gradient-text-animated">Our Story</h1>
+          <p className="text-xl text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             Bringing authentic Latin flavors to the Bay Area, one empanada at a time
           </p>
         </div>
 
         {/* Main Story */}
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mb-20">
-          <div className="animate-fade-in-left hover-scale">
+          <div className="animate-roll-in hover-rotate card-shine">
             <img
               src={marketScene}
               alt="CTK Empanadas at farmers market"
-              className="rounded-2xl shadow-2xl w-full h-auto transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(181,72,43,0.5)]"
+              className="rounded-2xl shadow-2xl w-full h-auto transition-all duration-700 hover:shadow-[0_40px_80px_-15px_rgba(181,72,43,0.6)] hover:scale-105"
             />
           </div>
-          <div className="animate-fade-in-right">
+          <div className="animate-fade-in-right float-particles">
             <h2 className="text-3xl font-heading font-bold mb-6">
               Founded by Cristian & Tatiana
             </h2>
@@ -51,34 +52,34 @@ const About = () => {
         </div>
 
         {/* Values Section */}
-        <div className="bg-muted/30 rounded-2xl p-12 max-w-6xl mx-auto mb-20">
-          <h2 className="text-3xl font-heading font-bold text-center mb-12">
+        <div className="bg-muted/30 rounded-2xl p-12 max-w-6xl mx-auto mb-20 animate-scale-in-center hover-lift">
+          <h2 className="text-3xl font-heading font-bold text-center mb-12 gradient-text animate-fade-in">
             What We Stand For
           </h2>
           <div className="grid md:grid-cols-3 gap-10">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+            <div className="text-center animate-bounce-in hover-tilt" style={{ animationDelay: "0.1s" }}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-pulse-scale hover-rotate">
                 <Heart className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-heading font-bold mb-3">Handcrafted Quality</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 gradient-text-animated">Handcrafted Quality</h3>
               <p className="text-muted-foreground">
                 Every empanada is made by hand with attention to detail and authentic techniques
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+            <div className="text-center animate-bounce-in hover-tilt" style={{ animationDelay: "0.3s" }}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-pulse-scale hover-rotate" style={{ animationDelay: "0.5s" }}>
                 <Leaf className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-heading font-bold mb-3">Local Ingredients</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 gradient-text-animated">Local Ingredients</h3>
               <p className="text-muted-foreground">
                 We partner with Bay Area farms to source the freshest, highest-quality ingredients
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+            <div className="text-center animate-bounce-in hover-tilt" style={{ animationDelay: "0.5s" }}>
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center animate-pulse-scale hover-rotate" style={{ animationDelay: "1s" }}>
                 <Award className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-heading font-bold mb-3">Community First</h3>
+              <h3 className="text-xl font-heading font-bold mb-3 gradient-text-animated">Community First</h3>
               <p className="text-muted-foreground">
                 We're committed to serving our community and building lasting relationships
               </p>
@@ -87,12 +88,12 @@ const About = () => {
         </div>
 
         {/* Quote Section */}
-        <div className="text-center max-w-4xl mx-auto">
-          <blockquote className="text-2xl md:text-3xl font-heading font-medium italic text-foreground mb-6">
+        <div className="text-center max-w-4xl mx-auto animate-fade-in-up glass-effect p-10 rounded-3xl">
+          <blockquote className="text-2xl md:text-3xl font-heading font-medium italic text-foreground mb-6 gradient-text-animated animate-pulse-soft">
             "Food is more than sustenance - it's a way to share our culture, our
             heritage, and our love with others."
           </blockquote>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.3s" }}>
             — Cristian & Tatiana, Founders
           </p>
         </div>

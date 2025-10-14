@@ -39,28 +39,29 @@ const Catering = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen py-20 bg-grain relative overflow-hidden">
+      <div className="absolute inset-0 bg-mesh-gradient opacity-30" />
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-5xl font-heading font-bold mb-6">
+        <div className="text-center mb-16 max-w-3xl mx-auto animate-blur-in">
+          <h1 className="text-5xl font-heading font-bold mb-6 gradient-text-animated">
             Catering Services
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             Bring authentic handcrafted empanadas to your next event
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Info Section */}
-          <div className="animate-fade-in-left">
+          <div className="animate-roll-in float-particles">
             <h2 className="text-3xl font-heading font-bold mb-8">
               Perfect for Any Event
             </h2>
 
             <div className="space-y-6 mb-10">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 animate-fade-in-left hover-lift" style={{ animationDelay: "0.1s" }}>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 animate-pulse-scale hover-rotate">
                   <Users className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -73,8 +74,8 @@ const Catering = () => {
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 animate-fade-in-left hover-lift" style={{ animationDelay: "0.2s" }}>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 animate-pulse-scale hover-rotate" style={{ animationDelay: "0.3s" }}>
                   <Sparkles className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -87,8 +88,8 @@ const Catering = () => {
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 animate-fade-in-left hover-lift" style={{ animationDelay: "0.3s" }}>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 animate-pulse-scale hover-rotate" style={{ animationDelay: "0.6s" }}>
                   <Calendar className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -102,8 +103,8 @@ const Catering = () => {
               </div>
             </div>
 
-            <div className="bg-muted/30 rounded-2xl p-6 border border-border">
-              <h3 className="text-xl font-heading font-bold mb-3">
+            <div className="bg-muted/30 rounded-2xl p-6 border border-border animate-scale-in hover-lift" style={{ animationDelay: "0.4s" }}>
+              <h3 className="text-xl font-heading font-bold mb-3 gradient-text">
                 What's Included
               </h3>
               <ul className="space-y-2 text-muted-foreground">
@@ -132,7 +133,7 @@ const Catering = () => {
           </div>
 
           {/* Form Section */}
-          <div className="bg-card rounded-2xl p-8 shadow-xl border border-border hover-lift animate-fade-in-right">
+          <div className="bg-card rounded-2xl p-8 shadow-xl border border-border hover-glow animate-flip-in card-shine">
             <h2 className="text-2xl font-heading font-bold mb-6">
               Request a Quote
             </h2>
@@ -213,7 +214,7 @@ const Catering = () => {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full">
+              <Button type="submit" size="lg" className="w-full hover-shine click-bounce hover-glow">
                 Submit Inquiry
               </Button>
             </form>
