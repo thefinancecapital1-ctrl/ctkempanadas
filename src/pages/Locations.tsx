@@ -52,10 +52,11 @@ const Locations = () => {
 
         {/* Markets Grid */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
-          {markets.map((market) => (
+          {markets.map((market, index) => (
             <div
               key={market.name}
-              className="bg-card rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-border"
+              className="bg-card rounded-2xl p-8 shadow-lg hover-lift border border-border animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <h3 className="text-2xl font-heading font-bold mb-4">
                 {market.name}

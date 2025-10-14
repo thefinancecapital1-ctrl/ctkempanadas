@@ -53,7 +53,7 @@ const Catering = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Info Section */}
-          <div>
+          <div className="animate-fade-in-left">
             <h2 className="text-3xl font-heading font-bold mb-8">
               Perfect for Any Event
             </h2>
@@ -132,7 +132,7 @@ const Catering = () => {
           </div>
 
           {/* Form Section */}
-          <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+          <div className="bg-card rounded-2xl p-8 shadow-xl border border-border hover-lift animate-fade-in-right">
             <h2 className="text-2xl font-heading font-bold mb-6">
               Request a Quote
             </h2>

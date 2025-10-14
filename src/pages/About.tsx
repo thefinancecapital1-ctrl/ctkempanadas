@@ -15,14 +15,14 @@ const About = () => {
 
         {/* Main Story */}
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mb-20">
-          <div>
+          <div className="animate-fade-in-left hover-scale">
             <img
               src={marketScene}
               alt="CTK Empanadas at farmers market"
-              className="rounded-2xl shadow-2xl w-full h-auto"
+              className="rounded-2xl shadow-2xl w-full h-auto transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(181,72,43,0.5)]"
             />
           </div>
-          <div>
+          <div className="animate-fade-in-right">
             <h2 className="text-3xl font-heading font-bold mb-6">
               Founded by Cristian & Tatiana
             </h2>
