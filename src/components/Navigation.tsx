@@ -1,15 +1,37 @@
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+import ctkLogo from "@/assets/ctk-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
 
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Menu", path: "/menu" },
+    { name: "Chef", path: "/chef" },
     { name: "Locations", path: "/locations" },
     { name: "Catering", path: "/catering" },
     { name: "About", path: "/about" },
@@ -22,14 +44,10 @@ const Navigation = () => {
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <h1 className="text-2xl font-heading font-bold text-foreground tracking-tight">
-              CTK Empanadas
-            </h1>
+          <Link to="/" className="flex items-center group">
+            <img src={ctkLogo} alt="CTK Empanadas" className="h-12 w-auto animate-float group-hover:scale-110 transition-transform" />
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -42,32 +60,26 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <Button size="default" asChild>
-              <a
-                href="https://www.ubereats.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Order Now
-              </a>
-            </Button>
+            {user ? (
+              <Button variant="outline" size="sm" onClick={handleSignOut}>
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </Button>
+            ) : (
+              <Button size="sm" asChild>
+                <Link to="/auth">
+                  <User className="w-4 h-4 mr-2" />
+                  Sign In
+                </Link>
+              </Button>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <X className="h-6 w-6 text-foreground" />
-            ) : (
-              <Menu className="h-6 w-6 text-foreground" />
-            )}
+          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-3">
             {navLinks.map((link) => (
@@ -75,22 +87,26 @@ const Navigation = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block text-base font-medium py-2 transition-colors hover:text-primary ${
+                className={`block text-base font-medium py-2 ${
                   isActive(link.path) ? "text-primary font-semibold" : "text-foreground"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Button size="default" className="w-full" asChild>
-              <a
-                href="https://www.ubereats.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Order Now
-              </a>
-            </Button>
+            {user ? (
+              <Button variant="outline" size="sm" onClick={handleSignOut} className="w-full">
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </Button>
+            ) : (
+              <Button size="sm" className="w-full" asChild>
+                <Link to="/auth">
+                  <User className="w-4 h-4 mr-2" />
+                  Sign In
+                </Link>
+              </Button>
+            )}
           </div>
         )}
       </div>
