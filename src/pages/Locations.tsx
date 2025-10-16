@@ -1,6 +1,7 @@
 import { MapPin, Clock, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import MapPreview from "@/components/MapPreview";
 
 interface MarketLocation {
   name: string;
@@ -38,105 +39,120 @@ const markets: MarketLocation[] = [
 
 const Locations = () => {
   return (
-    <div className="min-h-screen py-20 bg-grain relative overflow-hidden">
-      <div className="absolute inset-0 bg-mesh-gradient opacity-40" />
+    <div className="min-h-screen py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto animate-blur-in">
-          <h1 className="text-5xl font-heading font-bold mb-6 gradient-text-animated">
-            Find Us at Local Markets
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <h1 className="text-5xl font-heading font-bold mb-6">
+            Find Us
           </h1>
-          <p className="text-xl text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <p className="text-xl text-muted-foreground">
             Visit us at Bay Area farmers markets for the freshest empanadas
           </p>
         </div>
 
-        {/* Markets Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
-          {markets.map((market, index) => (
-            <div
-              key={market.name}
-              className="bg-card rounded-2xl p-8 shadow-lg hover-glow hover-tilt border border-border animate-flip-in card-shine click-bounce"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              <h3 className="text-2xl font-heading font-bold mb-4">
-                {market.name}
-              </h3>
-              
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <p className="text-muted-foreground">{market.address}</p>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <Calendar className="w-5 h-5 text-primary flex-shrink-0" />
-                  <p className="text-muted-foreground font-medium">
-                    {market.days}
-                  </p>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-primary flex-shrink-0" />
-                  <p className="text-muted-foreground">{market.time}</p>
-                </div>
+        {/* Main Location */}
+        <div className="max-w-3xl mx-auto mb-12">
+          <div className="bg-card rounded-2xl p-8 shadow-lg border border-border">
+            <h2 className="text-3xl font-heading font-bold mb-6 text-center">Our Location</h2>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                <p className="text-muted-foreground">61 Rickenbacker Circle, Livermore, California 94551, United States</p>
               </div>
-
-              <Button
-                variant="outline"
-                size="sm"
-                className="mt-6 w-full hover-shine click-ripple"
-                asChild
-              >
-                <a
-                  href={`https://www.google.com/maps/search/${encodeURIComponent(
-                    market.address
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get Directions
-                </a>
-              </Button>
             </div>
-          ))}
+            <Button
+              variant="outline"
+              size="sm"
+              className="mt-6 w-full"
+              asChild
+            >
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=61+Rickenbacker+Circle+Livermore+CA+94551"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Directions
+              </a>
+            </Button>
+          </div>
         </div>
 
-        {/* Map Placeholder */}
-        <div className="max-w-5xl mx-auto mb-16 animate-scale-in">
-          <div className="bg-muted/30 rounded-2xl p-8 text-center border border-border hover-lift float-particles">
-            <MapPin className="w-12 h-12 text-primary mx-auto mb-4 animate-float" />
-            <h3 className="text-2xl font-heading font-bold mb-2 gradient-text">
-              Interactive Map
-            </h3>
-            <p className="text-muted-foreground">
-              Coming soon: Interactive map showing all our market locations
-            </p>
+        {/* Map */}
+        <div className="max-w-5xl mx-auto mb-16">
+          <MapPreview />
+        </div>
+
+        {/* Markets Grid */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-center">Find Us at Local Markets</h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {markets.map((market, index) => (
+              <div
+                key={market.name}
+                className="bg-card rounded-2xl p-8 shadow-lg border border-border hover-lift"
+              >
+                <h3 className="text-2xl font-heading font-bold mb-4">
+                  {market.name}
+                </h3>
+                
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <p className="text-muted-foreground">{market.address}</p>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <Calendar className="w-5 h-5 text-primary flex-shrink-0" />
+                    <p className="text-muted-foreground font-medium">
+                      {market.days}
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-primary flex-shrink-0" />
+                    <p className="text-muted-foreground">{market.time}</p>
+                  </div>
+                </div>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="mt-6 w-full"
+                  asChild
+                >
+                  <a
+                    href={`https://www.google.com/maps/search/${encodeURIComponent(
+                      market.address
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Get Directions
+                  </a>
+                </Button>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Delivery CTA */}
-        <div className="text-center bg-gradient-animated rounded-3xl p-12 max-w-4xl mx-auto border border-primary/20 animate-scale-in-center">
-          <h2 className="text-3xl font-heading font-bold mb-4 text-white animate-bounce-in">
+        <div className="text-center bg-primary text-white rounded-3xl p-12 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-heading font-bold mb-4">
             Can't Make It to the Market?
           </h2>
-          <p className="text-lg text-white/90 mb-8 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            Order delivery through Uber Eats, DoorDash, or Postmates
+          <p className="text-lg mb-8">
+            Order delivery through Uber Eats, DoorDash, or GrubHub
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-up" style={{ animationDelay: "0.3s" }}>
-            <Button size="lg" asChild className="hover-shine click-bounce bg-white text-primary hover:bg-white/90">
-              <a
-                href="https://www.ubereats.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Order Delivery
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="hover-shine click-bounce border-white text-white hover:bg-white hover:text-primary">
-              <Link to="/catering">Book Catering</Link>
-            </Button>
-          </div>
+          <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
+            <a
+              href="https://www.ubereats.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Order Delivery
+            </a>
+          </Button>
         </div>
       </div>
     </div>

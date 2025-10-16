@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Chef from "./pages/Chef";
 import Locations from "./pages/Locations";
-import Catering from "./pages/Catering";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
@@ -31,7 +30,6 @@ const App = () => (
               <Route path="/menu" element={<Menu />} />
               <Route path="/chef" element={<Chef />} />
               <Route path="/locations" element={<Locations />} />
-              <Route path="/catering" element={<Catering />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/auth" element={<Auth />} />

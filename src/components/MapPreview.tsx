@@ -2,14 +2,12 @@ import { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-// Locations coordinates
-const locations = [
-  { name: "Hayward Farmers Market", coords: [-122.0808, 37.6688] },
-  { name: "Danville Farmers Market", coords: [-121.9999, 37.8216] },
-  { name: "San Rafael Civic Center", coords: [-122.5311, 37.9735] },
-  { name: "Livermore Location", coords: [-121.7680, 37.6819] },
-  { name: "San Francisco Location", coords: [-122.4194, 37.7749] },
-];
+// Main location coordinates
+const location = {
+  name: "CTK Empanadas",
+  address: "61 Rickenbacker Circle, Livermore, CA 94551",
+  coords: [-121.7747, 37.6819]
+};
 
 const MapPreview = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -24,24 +22,25 @@ const MapPreview = () => {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/light-v11',
-      center: [-122.2, 37.8],
-      zoom: 8.5,
+      center: location.coords as [number, number],
+      zoom: 14,
     });
 
     // Add navigation controls
     map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-    // Add markers for each location
-    locations.forEach((location) => {
-      const marker = new mapboxgl.Marker({ color: '#B5482B' })
-        .setLngLat(location.coords as [number, number])
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 }).setHTML(
-            `<h3 class="font-heading font-bold text-sm">${location.name}</h3>`
-          )
+    // Add marker for the location
+    new mapboxgl.Marker({ color: '#B5482B' })
+      .setLngLat(location.coords as [number, number])
+      .setPopup(
+        new mapboxgl.Popup({ offset: 25 }).setHTML(
+          `<div class="p-2">
+            <h3 class="font-heading font-bold text-sm mb-1">${location.name}</h3>
+            <p class="text-xs text-muted-foreground">${location.address}</p>
+          </div>`
         )
-        .addTo(map.current!);
-    });
+      )
+      .addTo(map.current!);
 
     return () => {
       map.current?.remove();

@@ -33,7 +33,6 @@ const Navigation = () => {
     { name: "Menu", path: "/menu" },
     { name: "Chef", path: "/chef" },
     { name: "Locations", path: "/locations" },
-    { name: "Catering", path: "/catering" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
