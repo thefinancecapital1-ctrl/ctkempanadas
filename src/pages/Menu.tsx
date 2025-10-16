@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import empanadaVariety from "@/assets/empanadas-variety.jpg";
+import empanadaVariety from "@/assets/hero-empanadas.jpg";
 import hamCheese from "@/assets/ham-cheese-real.jpg";
 import mushroom from "@/assets/mushroom-real.jpg";
 import beefEmpanada from "@/assets/beef-empanada.jpg";
