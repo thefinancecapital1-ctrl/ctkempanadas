@@ -12,28 +12,22 @@ interface MarketLocation {
 
 const markets: MarketLocation[] = [
   {
-    name: "Ferry Plaza Farmers Market",
-    address: "1 Ferry Building, San Francisco, CA 94111",
+    name: "Hayward Farmers Market",
+    address: "Hayward, CA",
     days: "Saturdays",
-    time: "8:00 AM - 2:00 PM",
-  },
-  {
-    name: "Palo Alto Farmers Market",
-    address: "Gilman Street, Palo Alto, CA 94301",
-    days: "Sundays",
     time: "9:00 AM - 1:00 PM",
   },
   {
-    name: "Alameda Farmers Market",
-    address: "2301 Alameda Ave, Alameda, CA 94501",
-    days: "Tuesdays",
-    time: "3:00 PM - 7:00 PM",
+    name: "Danville Farmers Market",
+    address: "Danville, CA",
+    days: "Saturdays",
+    time: "9:00 AM - 1:00 PM",
   },
   {
-    name: "Berkeley Farmers Market",
-    address: "Center Street & Martin Luther King Jr. Way, Berkeley, CA 94704",
-    days: "Saturdays",
-    time: "10:00 AM - 3:00 PM",
+    name: "San Rafael Civic Center Farmers Market",
+    address: "San Rafael, CA",
+    days: "Sundays",
+    time: "8:00 AM - 1:00 PM",
   },
 ];
 
@@ -44,37 +38,81 @@ const Locations = () => {
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h1 className="text-5xl font-heading font-bold mb-6">
-            Find Us
+            Better yet, see us in person!
           </h1>
           <p className="text-xl text-muted-foreground">
-            Visit us at Bay Area farmers markets for the freshest empanadas
+            Visit us at farmers markets or our physical locations
           </p>
         </div>
 
-        {/* Main Location */}
-        <div className="max-w-3xl mx-auto mb-12">
-          <div className="bg-card rounded-2xl p-8 shadow-lg border border-border">
-            <h2 className="text-3xl font-heading font-bold mb-6 text-center">Our Location</h2>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                <p className="text-muted-foreground">61 Rickenbacker Circle, Livermore, California 94551, United States</p>
+        {/* Physical Locations */}
+        <div className="max-w-5xl mx-auto mb-16">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-center">Our Physical Locations</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Livermore Location */}
+            <div className="bg-card rounded-2xl p-8 shadow-lg border border-border">
+              <h3 className="text-2xl font-heading font-bold mb-4">Livermore</h3>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-muted-foreground">61 Rickenbacker Circle, Livermore, CA 94551</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div className="text-muted-foreground">
+                    <p>Tuesdays: 7:00 PM - 10:00 PM</p>
+                    <p>Wednesdays: 7:00 PM - 10:00 PM</p>
+                    <p>Fridays: 7:00 PM - 10:00 PM</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <Button
-              variant="outline"
-              size="sm"
-              className="mt-6 w-full"
-              asChild
-            >
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=61+Rickenbacker+Circle+Livermore+CA+94551"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full"
+                asChild
               >
-                Get Directions
-              </a>
-            </Button>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=61+Rickenbacker+Circle+Livermore+CA+94551"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Get Directions
+                </a>
+              </Button>
+            </div>
+
+            {/* San Francisco Location */}
+            <div className="bg-card rounded-2xl p-8 shadow-lg border border-border">
+              <h3 className="text-2xl font-heading font-bold mb-4">San Francisco</h3>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-muted-foreground">1355 Market Street, San Francisco, CA 94103</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div className="text-muted-foreground">
+                    <p>Monday - Thursday: 9:00 AM - 4:00 PM</p>
+                    <p>Friday: 9:00 AM - 2:00 PM</p>
+                  </div>
+                </div>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full"
+                asChild
+              >
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=1355+Market+Street+San+Francisco+CA+94103"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Get Directions
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -139,20 +177,40 @@ const Locations = () => {
         {/* Delivery CTA */}
         <div className="text-center bg-primary text-white rounded-3xl p-12 max-w-4xl mx-auto">
           <h2 className="text-3xl font-heading font-bold mb-4">
-            Can't Make It to the Market?
+            Can't Make It in Person?
           </h2>
           <p className="text-lg mb-8">
-            Order delivery through Uber Eats, DoorDash, or GrubHub
+            Order delivery through DoorDash, GrubHub, or Uber Eats
           </p>
-          <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
-            <a
-              href="https://www.ubereats.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Order Delivery
-            </a>
-          </Button>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
+              <a
+                href="https://www.doordash.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                DoorDash
+              </a>
+            </Button>
+            <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
+              <a
+                href="https://www.grubhub.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GrubHub
+              </a>
+            </Button>
+            <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
+              <a
+                href="https://www.ubereats.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Uber Eats
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

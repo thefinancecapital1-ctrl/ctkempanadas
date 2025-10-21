@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Mail, Phone, Instagram, Facebook } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,16 +13,42 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! We'll get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+
+    try {
+      // Replace this URL with your Google Apps Script web app URL
+      // Instructions: https://github.com/jamiewilson/form-to-google-sheets
+      const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+      
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('subject', formData.subject);
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('timestamp', new Date().toISOString());
+
+      await fetch(scriptURL, { 
+        method: 'POST', 
+        body: formDataToSend 
+      });
+
+      toast.success("Message sent! We'll get back to you soon.");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      toast.error("Failed to send message. Please try emailing us directly.");
+      console.error('Error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -85,44 +111,18 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-muted/30 rounded-2xl p-8 border border-border mb-8 animate-scale-in hover-lift" style={{ animationDelay: "0.3s" }}>
-              <h3 className="text-xl font-heading font-bold mb-6 gradient-text">
-                Follow Us
-              </h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover-glow click-bounce animate-float"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://www.facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover-glow click-bounce animate-float"
-                  style={{ animationDelay: "0.5s" }}
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-6 h-6" />
-                </a>
-              </div>
-            </div>
-
             <div className="bg-primary/5 rounded-2xl p-6 border border-primary/20">
               <h3 className="text-lg font-heading font-bold mb-2">
-                Business Hours
+                Website
               </h3>
-              <p className="text-muted-foreground">
-                We're at farmers markets throughout the week. Check our{" "}
-                <a href="/locations" className="text-primary hover:underline">
-                  Locations page
-                </a>{" "}
-                for specific times and places.
-              </p>
+              <a 
+                href="https://www.CTKempanadas.com" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                www.CTKempanadas.com
+              </a>
             </div>
           </div>
 
@@ -182,13 +182,16 @@ const Contact = () => {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full hover-shine click-bounce hover-glow">
-                Send Message
+              <Button type="submit" size="lg" className="w-full hover-shine click-bounce hover-glow" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
 
             <p className="text-sm text-muted-foreground text-center mt-6">
               We typically respond within 24 hours
+            </p>
+            <p className="text-xs text-muted-foreground text-center mt-2">
+              Note: To enable form submission, replace YOUR_GOOGLE_APPS_SCRIPT_URL_HERE in the code with your Google Apps Script web app URL.
             </p>
           </div>
         </div>
