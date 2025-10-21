@@ -20,9 +20,8 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Replace this URL with your Google Apps Script web app URL
-      // Instructions: https://github.com/jamiewilson/form-to-google-sheets
-      const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+      // Google Apps Script web app URL
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxdd9VZLw6GVDz0X5zizMh-5m-WaM5OWShSSWHbP_2o9neMtNRQRlxcZbVlMfoiTgn2EQ/exec';
       
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
@@ -189,9 +188,6 @@ const Contact = () => {
 
             <p className="text-sm text-muted-foreground text-center mt-6">
               We typically respond within 24 hours
-            </p>
-            <p className="text-xs text-muted-foreground text-center mt-2">
-              Note: To enable form submission, replace YOUR_GOOGLE_APPS_SCRIPT_URL_HERE in the code with your Google Apps Script web app URL.
             </p>
           </div>
         </div>

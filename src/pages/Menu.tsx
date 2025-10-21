@@ -3,10 +3,13 @@ import empanadaVariety from "@/assets/hero-empanadas.jpg";
 import hamCheese from "@/assets/ham-cheese-real.jpg";
 import mushroom from "@/assets/mushroom-real.jpg";
 import beefEmpanada from "@/assets/beef-empanada.jpg";
-import chickenEmpanada from "@/assets/chicken-empanada.jpg";
+import chickenEmpanada from "@/assets/chicken-empanada-photo.jpg";
 import spinachEmpanada from "@/assets/spinach-empanada.jpg";
 import dulceEmpanada from "@/assets/dulce-empanada.jpg";
 import sweetPotatoEmpanada from "@/assets/sweet-potato-real.jpg";
+import cornEmpanada from "@/assets/corn-empanada.jpg";
+import appleEmpanada from "@/assets/apple-empanada-new.jpg";
+import potatoEmpanada from "@/assets/potato-empanada.png";
 
 interface MenuItem {
   name: string;
@@ -22,7 +25,7 @@ const menuItems: MenuItem[] = [
     name: "Classic Beef",
     description: "Sautéed beef, seasoned to perfection with onions, garlic, and soy sauce, accompanied by crispy potatoes, all encased in a golden, flaky crust.",
     price: "$7.00",
-    image: beefEmpanada,
+    image: "",
     category: "savory",
   },
   {
@@ -43,7 +46,7 @@ const menuItems: MenuItem[] = [
     name: "Pork",
     description: "Slow-cooked pulled pork lovingly enveloped in a delicate, flaky pastry shell, creating a symphony of textures with each bite.",
     price: "$7.00",
-    image: beefEmpanada,
+    image: "",
     category: "savory",
   },
   {
@@ -64,14 +67,14 @@ const menuItems: MenuItem[] = [
     name: "Sweet Corn and Mozzarella",
     description: "Succulent sweet corn kernels harmonize with the delicate essence of yellow squash, embraced by the gooey richness of mozzarella.",
     price: "$7.00",
-    image: spinachEmpanada,
+    image: cornEmpanada,
     category: "savory",
   },
   {
     name: "Potato",
     description: "Tender diced potatoes seasoned with garlic, bloomed onions, salt, pepper, smoky paprika, red chili flakes, and a unique mix of veggies.",
     price: "$7.00",
-    image: beefEmpanada,
+    image: potatoEmpanada,
     category: "savory",
   },
   {
@@ -85,28 +88,28 @@ const menuItems: MenuItem[] = [
     name: "Apple",
     description: "Tender, caramelized Honey Crisp apples infused with warm cinnamon spice. A heavenly combination of sweet and tart flavors.",
     price: "$7.00",
-    image: dulceEmpanada,
+    image: appleEmpanada,
     category: "sweet",
   },
   {
     name: "Pineapple",
     description: "Pineapple infused with a hint of cinnamon, brushed with egg wash, and delicately sprinkled with sanding sugar for an irresistible crunch.",
     price: "$7.00",
-    image: dulceEmpanada,
+    image: "",
     category: "sweet",
   },
   {
     name: "Arroz Con Leche Y Mazamorra Morada",
     description: "An innovative fusion that seamlessly blends the creamy comfort of traditional arroz con leche with the vibrant flavors of mazamorra morada.",
     price: "$7.00",
-    image: dulceEmpanada,
+    image: "",
     category: "sweet",
   },
   {
     name: "Chicha Morada",
     description: "Crafted from purple corn, simmered with pineapple, apple, cinnamon, and cloves. A traditional Peruvian drink that offers a symphony of flavors.",
     price: "$6.00",
-    image: dulceEmpanada,
+    image: "",
     category: "drink",
   },
 ];
@@ -169,12 +172,16 @@ const Menu = () => {
                   key={item.name}
                   className="bg-card rounded-2xl overflow-hidden shadow-lg hover-lift transition-all"
                 >
-                  <div className="aspect-square overflow-hidden relative">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
-                    />
+                  <div className="aspect-square overflow-hidden relative bg-muted flex items-center justify-center">
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
+                      />
+                    ) : (
+                      <p className="text-muted-foreground text-lg font-medium">Image Coming Soon</p>
+                    )}
                   </div>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-3">
@@ -207,12 +214,16 @@ const Menu = () => {
                   key={item.name}
                   className="bg-card rounded-2xl overflow-hidden shadow-lg hover-lift transition-all"
                 >
-                  <div className="aspect-square overflow-hidden relative">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
-                    />
+                  <div className="aspect-square overflow-hidden relative bg-muted flex items-center justify-center">
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
+                      />
+                    ) : (
+                      <p className="text-muted-foreground text-lg font-medium">Image Coming Soon</p>
+                    )}
                   </div>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-3">
