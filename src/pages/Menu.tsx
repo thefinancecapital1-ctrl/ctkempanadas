@@ -1,15 +1,14 @@
 import { Button } from "@/components/ui/button";
-import empanadaVariety from "@/assets/hero-empanadas.jpg";
 import hamCheese from "@/assets/ham-cheese-real.jpg";
 import mushroom from "@/assets/mushroom-real.jpg";
-import beefEmpanada from "@/assets/beef-empanada.jpg";
-import chickenEmpanada from "@/assets/chicken-empanada-photo.jpg";
 import spinachEmpanada from "@/assets/spinach-empanada.jpg";
-import dulceEmpanada from "@/assets/dulce-empanada.jpg";
 import sweetPotatoEmpanada from "@/assets/sweet-potato-real.jpg";
-import cornEmpanada from "@/assets/corn-empanada.jpg";
-import appleEmpanada from "@/assets/apple-empanada-new.jpg";
-import potatoEmpanada from "@/assets/potato-empanada.png";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { FadeContent } from "@/components/animations/FadeContent";
+import { StaggeredMenu } from "@/components/animations/StaggeredMenu";
+import { GradientText } from "@/components/animations/GradientText";
+import { GlareHover } from "@/components/animations/GlareHover";
+import { motion } from "framer-motion";
 
 interface MenuItem {
   name: string;
@@ -22,6 +21,34 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   {
+    name: "Sweet Corn and Mozzarella",
+    description: "Succulent sweet corn kernels harmonize with the delicate essence of yellow squash, embraced by the gooey richness of mozzarella.",
+    price: "$7.00",
+    image: "user-uploads://Screenshot_2025-10-20_at_6.09.37 PM.png",
+    category: "savory",
+  },
+  {
+    name: "Apple",
+    description: "Tender, caramelized Honey Crisp apples infused with warm cinnamon spice. A heavenly combination of sweet and tart flavors.",
+    price: "$7.00",
+    image: "user-uploads://Screenshot_2025-10-20_at_6.11.03 PM.png",
+    category: "sweet",
+  },
+  {
+    name: "Chicken",
+    description: "Tender chicken, infused with the smoky kick of paprika, powdered chili, and cumin, creates a harmonious blend of spiciness and savory flavors.",
+    price: "$7.00",
+    image: "user-uploads://Screenshot_2025-10-20_at_6.12.08 PM.png",
+    category: "savory",
+  },
+  {
+    name: "Potato",
+    description: "Tender diced potatoes seasoned with garlic, bloomed onions, salt, pepper, smoky paprika, red chili flakes, and a unique mix of veggies.",
+    price: "$7.00",
+    image: "user-uploads://image-7.png",
+    category: "savory",
+  },
+  {
     name: "Classic Beef",
     description: "Sautéed beef, seasoned to perfection with onions, garlic, and soy sauce, accompanied by crispy potatoes, all encased in a golden, flaky crust.",
     price: "$7.00",
@@ -29,17 +56,10 @@ const menuItems: MenuItem[] = [
     category: "savory",
   },
   {
-    name: "Chicken",
-    description: "Tender chicken, infused with the smoky kick of paprika, powdered chili, and cumin, creates a harmonious blend of spiciness and savory flavors.",
-    price: "$7.00",
-    image: chickenEmpanada,
-    category: "savory",
-  },
-  {
     name: "Chicken Chorizo",
     description: "Infused with garlic, onions, and Aji Amarillo. Succulent chicken chorizo enhances the savory notes creating a delightful symphony of tastes.",
     price: "$7.00",
-    image: empanadaVariety,
+    image: "",
     category: "savory",
   },
   {
@@ -64,32 +84,11 @@ const menuItems: MenuItem[] = [
     category: "savory",
   },
   {
-    name: "Sweet Corn and Mozzarella",
-    description: "Succulent sweet corn kernels harmonize with the delicate essence of yellow squash, embraced by the gooey richness of mozzarella.",
-    price: "$7.00",
-    image: cornEmpanada,
-    category: "savory",
-  },
-  {
-    name: "Potato",
-    description: "Tender diced potatoes seasoned with garlic, bloomed onions, salt, pepper, smoky paprika, red chili flakes, and a unique mix of veggies.",
-    price: "$7.00",
-    image: potatoEmpanada,
-    category: "savory",
-  },
-  {
     name: "Sweet Potato",
     description: "A harmonious mixture of sweet potato, tender corn, hearty black beans, and aromatic spices including salt, garlic, pepper, and cumin. Complemented by Pepper Jack cheese.",
     price: "$7.00",
     image: sweetPotatoEmpanada,
     category: "savory",
-  },
-  {
-    name: "Apple",
-    description: "Tender, caramelized Honey Crisp apples infused with warm cinnamon spice. A heavenly combination of sweet and tart flavors.",
-    price: "$7.00",
-    image: appleEmpanada,
-    category: "sweet",
   },
   {
     name: "Pineapple",
@@ -132,10 +131,16 @@ const Menu = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-5xl font-heading font-bold mb-6">Our Menu</h1>
-          <p className="text-xl text-muted-foreground">
-            All empanadas are handcrafted fresh daily with premium ingredients
-          </p>
+          <ScrollReveal>
+            <h1 className="text-5xl font-heading font-bold mb-6">
+              <GradientText>Our Menu</GradientText>
+            </h1>
+          </ScrollReveal>
+          <FadeContent delay={0.2}>
+            <p className="text-xl text-muted-foreground">
+              All empanadas are handcrafted fresh daily with premium ingredients
+            </p>
+          </FadeContent>
         </div>
 
         {/* Peruvian Sauces */}
@@ -161,15 +166,21 @@ const Menu = () => {
 
         {/* Savory Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-center">
-            Savory Empanadas
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <ScrollReveal>
+            <h2 className="text-3xl font-heading font-bold mb-8 text-center">
+              Savory Empanadas
+            </h2>
+          </ScrollReveal>
+          <StaggeredMenu className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {menuItems
               .filter((item) => item.category === "savory")
               .map((item, index) => (
-                <div
+                <motion.div
                   key={item.name}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
                   className="bg-card rounded-2xl overflow-hidden shadow-lg hover-lift transition-all"
                 >
                   <div className="aspect-square overflow-hidden relative bg-muted flex items-center justify-center">
@@ -192,26 +203,34 @@ const Menu = () => {
                         {item.price}
                       </span>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
-                      {item.description}
-                    </p>
+                    <FadeContent>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {item.description}
+                      </p>
+                    </FadeContent>
                   </div>
-                </div>
+                </motion.div>
               ))}
-          </div>
+          </StaggeredMenu>
         </div>
 
         {/* Sweet Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-heading font-bold mb-8 text-center">
-            Sweet Empanadas & Drinks
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <ScrollReveal>
+            <h2 className="text-3xl font-heading font-bold mb-8 text-center">
+              Sweet Empanadas & Drinks
+            </h2>
+          </ScrollReveal>
+          <StaggeredMenu className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {menuItems
               .filter((item) => item.category === "sweet" || item.category === "drink")
               .map((item, index) => (
-                <div
+                <motion.div
                   key={item.name}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
                   className="bg-card rounded-2xl overflow-hidden shadow-lg hover-lift transition-all"
                 >
                   <div className="aspect-square overflow-hidden relative bg-muted flex items-center justify-center">
@@ -234,13 +253,15 @@ const Menu = () => {
                         {item.price}
                       </span>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
-                      {item.description}
-                    </p>
+                    <FadeContent>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {item.description}
+                      </p>
+                    </FadeContent>
                   </div>
-                </div>
+                </motion.div>
               ))}
-          </div>
+          </StaggeredMenu>
         </div>
 
         {/* Sodas & San Pellegrino */}
@@ -258,31 +279,39 @@ const Menu = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16 bg-primary p-12 rounded-3xl">
-          <h3 className="text-2xl font-heading font-bold mb-4 text-white">
-            Ready to Order?
-          </h3>
-          <p className="text-white/90 mb-6 max-w-xl mx-auto">
-            Get our handcrafted empanadas delivered right to your door
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
-              <a href="https://www.ubereats.com" target="_blank" rel="noopener noreferrer">
-                Order on Uber Eats
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white hover:text-primary">
-              <a href="https://www.doordash.com" target="_blank" rel="noopener noreferrer">
-                Order on DoorDash
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white hover:text-primary">
-              <a href="https://www.grubhub.com" target="_blank" rel="noopener noreferrer">
-                Order on GrubHub
-              </a>
-            </Button>
+        <ScrollReveal>
+          <div className="text-center mt-16 bg-primary p-12 rounded-3xl">
+            <h3 className="text-2xl font-heading font-bold mb-4 text-white">
+              Ready to Order?
+            </h3>
+            <p className="text-white/90 mb-6 max-w-xl mx-auto">
+              Get our handcrafted empanadas delivered right to your door
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <GlareHover>
+                <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
+                  <a href="https://www.ubereats.com" target="_blank" rel="noopener noreferrer">
+                    Order on Uber Eats
+                  </a>
+                </Button>
+              </GlareHover>
+              <GlareHover>
+                <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white hover:text-primary">
+                  <a href="https://www.doordash.com" target="_blank" rel="noopener noreferrer">
+                    Order on DoorDash
+                  </a>
+                </Button>
+              </GlareHover>
+              <GlareHover>
+                <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white hover:text-primary">
+                  <a href="https://www.grubhub.com" target="_blank" rel="noopener noreferrer">
+                    Order on GrubHub
+                  </a>
+                </Button>
+              </GlareHover>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </div>
   );
