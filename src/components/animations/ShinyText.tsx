@@ -8,37 +8,27 @@ interface ShinyTextProps {
 
 export const ShinyText = ({ children, className }: ShinyTextProps) => {
   return (
-    <motion.div
+    <motion.span
       className={cn("relative inline-block", className)}
-      initial={{ backgroundPosition: "200% center" }}
-      animate={{
-        backgroundPosition: ["200% center", "-200% center"],
-      }}
-      transition={{
-        duration: 3,
-        ease: "linear",
-        repeat: Infinity,
-      }}
       style={{
-        backgroundImage:
-          "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%)",
+        background:
+          "linear-gradient(90deg, currentColor 0%, currentColor 40%, rgba(255,255,255,0.9) 50%, currentColor 60%, currentColor 100%)",
         backgroundSize: "200% 100%",
         backgroundClip: "text",
         WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
         color: "transparent",
+        WebkitTextFillColor: "transparent",
+      }}
+      animate={{
+        backgroundPosition: ["200% 0%", "-200% 0%"],
+      }}
+      transition={{
+        duration: 4,
+        ease: "linear",
+        repeat: Infinity,
       }}
     >
-      <span
-        className={className}
-        style={{
-          backgroundImage: "inherit",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-        }}
-      >
-        {children}
-      </span>
-    </motion.div>
+      {children}
+    </motion.span>
   );
 };

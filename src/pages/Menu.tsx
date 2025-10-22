@@ -3,6 +3,9 @@ import hamCheese from "@/assets/ham-cheese-real.jpg";
 import mushroom from "@/assets/mushroom-real.jpg";
 import spinachEmpanada from "@/assets/spinach-empanada.jpg";
 import sweetPotatoEmpanada from "@/assets/sweet-potato-real.jpg";
+import cornEmpanada from "@/assets/corn-empanada-real.png";
+import chickenEmpanada from "@/assets/chicken-empanada-real.png";
+import appleEmpanada from "@/assets/apple-empanada-real.png";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { FadeContent } from "@/components/animations/FadeContent";
 import { StaggeredMenu } from "@/components/animations/StaggeredMenu";
@@ -24,22 +27,22 @@ const menuItems: MenuItem[] = [
     name: "Sweet Corn and Mozzarella",
     description: "Succulent sweet corn kernels harmonize with the delicate essence of yellow squash, embraced by the gooey richness of mozzarella.",
     price: "$7.00",
-    image: "user-uploads://Screenshot_2025-10-20_at_6.09.37 PM.png",
+    image: cornEmpanada,
+    category: "savory",
+  },
+  {
+    name: "Chicken",
+    description: "Tender chicken, infused with the smoky kick of paprika, powdered chili, and cumin, creates a harmonious blend of spiciness and savory flavors.",
+    price: "$7.00",
+    image: chickenEmpanada,
     category: "savory",
   },
   {
     name: "Apple",
     description: "Tender, caramelized Honey Crisp apples infused with warm cinnamon spice. A heavenly combination of sweet and tart flavors.",
     price: "$7.00",
-    image: "user-uploads://Screenshot_2025-10-20_at_6.11.03 PM.png",
+    image: appleEmpanada,
     category: "sweet",
-  },
-  {
-    name: "Chicken",
-    description: "Tender chicken, infused with the smoky kick of paprika, powdered chili, and cumin, creates a harmonious blend of spiciness and savory flavors.",
-    price: "$7.00",
-    image: "user-uploads://Screenshot_2025-10-20_at_6.12.08 PM.png",
-    category: "savory",
   },
   {
     name: "Potato",
